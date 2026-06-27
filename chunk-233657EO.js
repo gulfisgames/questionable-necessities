@@ -1,0 +1,1 @@
+var o="Sound Board";var e=["secondary","tertiary","success","dark","medium","danger"],t=`Import ${o} JSON`,r=`Export ${o} JSON`,n=100,p={name:"Why is you so mean to me",link:"https://youtu.be/cM6hnp3iB5U"},u=80;export{o as a,e as b,t as c,r as d,n as e,p as f,u as g};

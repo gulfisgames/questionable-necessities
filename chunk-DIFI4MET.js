@@ -1,0 +1,1 @@
+var o="Combat Tokens",r=`Import ${o} JSON`,a=e=>`Export ${o} ${e}`,x={Tiny:"1x1",Small:"2x2",Medium:"2x2",Large:"4x4",Huge:"6x6",Gargantuan:"8x8"},p=["#009e73","#56b4e9","#f0e442","#0072b2","#d55e00","#cc79a7","#999999","#e69f00"],s={min:10,max:200},n=e=>parseInt(x[e]),c=(e,t)=>e?e*n(t)+"px":"center";export{o as a,r as b,a as c,x as d,p as e,s as f,n as g,c as h};
