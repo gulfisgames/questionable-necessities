@@ -38,7 +38,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "https://gulfaraz.github.io/questionable-necessities/",
+              "baseHref": "https://qn.gulfaraz.com/",
               "budgets": [
                 {
                   "type": "initial",
