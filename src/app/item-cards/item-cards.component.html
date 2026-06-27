@@ -1,0 +1,45 @@
+<ion-content>
+    <ion-grid>
+        <app-guide [name]="name" />
+        <ion-row>
+            <ion-col size="12" size-lg="6">
+                <app-json-importer
+                    [label]="importLabel"
+                    expand="block"
+                    fill="outline"
+                    size="large"
+                    classes="ion-margin"
+                    (importEvent)="setCards($event)"
+                />
+                <ion-progress-bar value="1" color="light" />
+                <app-item-card-editor
+                    [card]="card"
+                    (saveCardEvent)="saveCard($event)"
+                />
+                <ion-progress-bar value="1" color="light" />
+                <app-item-card-sets (loadCardSetEvent)="loadCardSet($event)" />
+            </ion-col>
+            <ion-col size="12" size-lg="6">
+                <app-item-cards-controls
+                    [preview]="preview"
+                    (togglePreviewEvent)="togglePreview($event)"
+                    [cards]="cards"
+                />
+                @if (!preview) {
+                    <app-item-cards-table
+                        [cards]="cards"
+                        (deleteCardEvent)="deleteCard($event)"
+                        (loadCardEvent)="loadCard($event)"
+                    />
+                }
+                @if (preview) {
+                    <app-item-cards-viewer
+                        [cards]="cards"
+                        (loadCardEvent)="loadCard($event)"
+                    />
+                }
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <app-footer />
+</ion-content>

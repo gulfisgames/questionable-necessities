@@ -1,0 +1,78 @@
+<ion-tabs>
+    <ion-tab-bar
+        class="ion-justify-content-start"
+        slot="top"
+        translucent="true"
+    >
+        <ion-tab-button
+            id="menu-content"
+            class="ion-flex-grow-0 ion-margin-start overflow-y-visible"
+        >
+            <ion-menu-toggle>
+                <ion-avatar />
+            </ion-menu-toggle>
+        </ion-tab-button>
+        <ion-tab-button class="opacity-100" routerLink="/">
+            <ion-label class="ion-text-start ion-padding-start">
+                <h1 class="font-bold font-im-fell-english">
+                    Questionable Necessities
+                </h1>
+            </ion-label>
+        </ion-tab-button>
+        @for (n of name; track n.tab) {
+            <ion-tab-button
+                [tab]="n.tab"
+                [class.ion-display-none]="n.xlOnly"
+                [class.ion-display-xl-block]="n.xlOnly"
+            >
+                <ion-label>{{ n.label }}</ion-label>
+            </ion-tab-button>
+        }
+        <ion-tab-button class="payment-link" [href]="paymentLink">
+            <ion-label>Pay What You Want</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>
+<ion-menu contentId="menu-content">
+    <ion-header class="font-bold font-im-fell-english ion-no-margin">
+        <ion-toolbar>
+            <ion-row>
+                <ion-col size="auto" class="ion-align-content-center">
+                    <ion-menu-toggle>
+                        <ion-avatar class="ion-margin-start cursor-pointer" />
+                    </ion-menu-toggle>
+                </ion-col>
+                <ion-col>
+                    <ion-button
+                        fill="clear"
+                        routerLink="/"
+                        class="ion-text-start opacity-100"
+                    >
+                        <h1
+                            class="ion-no-margin font-bold font-im-fell-english"
+                        >
+                            Questionable Necessities
+                        </h1>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        <ion-menu-toggle auto-hide="true">
+            <ion-list
+                class="h-full ion-display-flex ion-flex-column"
+                lines="full"
+            >
+                @for (n of name; track n.tab) {
+                    <ion-item [routerLink]="['/' + n.tab]">
+                        {{ n.label }}
+                    </ion-item>
+                }
+                <ion-item class="mt-auto" detail="false" [href]="paymentLink">
+                    <ion-label>Pay What You Want</ion-label>
+                </ion-item>
+            </ion-list>
+        </ion-menu-toggle>
+    </ion-content>
+</ion-menu>

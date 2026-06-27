@@ -1,0 +1,54 @@
+.token {
+    background-color: #ffffff;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    vertical-align: top;
+    width: var(--size);
+    height: var(--size);
+    border-style: solid;
+    border-color: #ff00ff;
+    border-radius: 50%;
+    border-width: calc(var(--size) / 10);
+
+    &.large,
+    &.huge {
+        border-width: calc(var(--size) / 15);
+    }
+
+    &.gargantuan {
+        border-width: calc(var(--size) / 20);
+    }
+
+    &.tiny {
+        --size: 12.5mm;
+        grid-row: span 1;
+        grid-column: span 1;
+    }
+
+    &.small,
+    &.medium {
+        --size: 25mm;
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+
+    &.large {
+        --size: 50mm;
+        grid-row: span 4;
+        grid-column: span 4;
+    }
+
+    &.huge {
+        --size: 75mm;
+        grid-row: span 6;
+        grid-column: span 6;
+    }
+
+    &.gargantuan {
+        --size: 100mm;
+        grid-row: span 8;
+        grid-column: span 8;
+    }
+}

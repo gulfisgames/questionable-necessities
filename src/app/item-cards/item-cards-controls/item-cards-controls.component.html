@@ -1,0 +1,27 @@
+<ion-header class="ion-margin-bottom">
+    <ion-toolbar color="transparent">
+        @if (!preview) {
+            <app-json-exporter [label]="exportLabel('JSON')" [json]="cards" />
+        }
+        @if (preview) {
+            <app-pdf-exporter
+                [label]="exportLabel('PDF')"
+                sheetSelector=".item-cards-sheet"
+            />
+        }
+        <ion-segment
+            class="ion-no-margin"
+            [value]="preview"
+            slot="end"
+            color="dark"
+            (ionChange)="togglePreview($any($event))"
+        >
+            <ion-segment-button [value]="false">
+                <ion-label>Table</ion-label>
+            </ion-segment-button>
+            <ion-segment-button [value]="true">
+                <ion-label>PDF</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>

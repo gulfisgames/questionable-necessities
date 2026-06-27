@@ -1,0 +1,31 @@
+<table>
+    <tr>
+        <td colspan="1">{{ card.identifier }}</td>
+        <td colspan="3" class="font-bold">
+            {{ card.name }}
+        </td>
+    </tr>
+    @if (card.attunement) {
+        <tr>
+            <td colspan="4" class="attunement">
+                {{ card.attunement }}
+            </td>
+        </tr>
+    }
+    @if (card.rarity) {
+        <tr>
+            <td colspan="2">{{ card.type }}</td>
+            <td colspan="2">{{ card.rarity }}</td>
+        </tr>
+    }
+    @if (!card.rarity) {
+        <tr>
+            <td colspan="4">{{ card.type }}</td>
+        </tr>
+    }
+    <tr>
+        <td colspan="4" class="description">
+            {{ card.description }}
+        </td>
+    </tr>
+</table>

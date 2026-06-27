@@ -1,0 +1,22 @@
+:host {
+    display: block;
+    height: 843px;
+}
+
+.body {
+    padding: 0;
+}
+
+.sheet {
+    --rows: 16;
+    --columns: 22;
+    --gap: 0.5mm;
+    margin: 5mm;
+    padding: 1.25mm 5.75mm;
+    grid-auto-flow: row;
+}
+
+.token:hover {
+    cursor: pointer;
+    filter: saturate(0);
+}

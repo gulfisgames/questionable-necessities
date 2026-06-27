@@ -1,0 +1,14 @@
+<ion-header class="ion-margin-bottom">
+    <ion-toolbar color="transparent">
+        <app-json-importer
+            slot="start"
+            label="Import Characters JSON"
+            (importEvent)="import($event)"
+        />
+        <app-json-exporter
+            slot="end"
+            label="Export Characters JSON"
+            [json]="characters"
+        />
+    </ion-toolbar>
+</ion-header>

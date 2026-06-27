@@ -1,0 +1,70 @@
+<ion-toolbar>
+    <ion-label slot="start" class="ion-padding sound-name">
+        @if (loading) {
+            <i>Loading...</i>
+        }
+        {{ sound?.name }}
+        @if (error) {
+            <i>...error!</i>
+        }
+    </ion-label>
+    <ion-buttons class="ion-margin ion-justify-content-center">
+        <ion-button
+            (click)="playback(soundPlaybackEvent.Reverse)"
+            [disabled]="loading || error"
+        >
+            <ion-icon name="play-back-outline" />
+        </ion-button>
+        <ion-button
+            (click)="
+                playback(
+                    isPlaying
+                        ? soundPlaybackEvent.Pause
+                        : soundPlaybackEvent.Play
+                )
+            "
+            [disabled]="loading || error"
+        >
+            @if (!loading) {
+                <ion-icon
+                    size="large"
+                    slot="icon-only"
+                    [name]="isPlaying ? 'pause' : 'play'"
+                />
+            }
+            @if (loading) {
+                <ion-spinner
+                    slot="icon-only"
+                    name="crescent"
+                    class="loading-spinner"
+                />
+            }
+        </ion-button>
+        <ion-button
+            (click)="playback(soundPlaybackEvent.Forward)"
+            [disabled]="loading || error"
+        >
+            <ion-icon name="play-forward-outline" />
+        </ion-button>
+    </ion-buttons>
+    <ion-range
+        slot="end"
+        pin="true"
+        snaps="true"
+        ticks="false"
+        [value]="player && player.getVolume()"
+        [disabled]="loading || error"
+        class="ion-padding sound-player-volume"
+        (ionChange)="setVolume($any($event))"
+    >
+        <ion-icon slot="start" name="volume-low-outline" />
+        <ion-icon slot="end" name="volume-high-outline" />
+    </ion-range>
+    <ion-progress-bar
+        class="sound-player-progress-bar"
+        [value]="playbackTime"
+        [buffer]="bufferedTime"
+        [type]="player ? 'determinate' : 'indeterminate'"
+        (click)="seekVideo($event)"
+    />
+</ion-toolbar>

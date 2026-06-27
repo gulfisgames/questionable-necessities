@@ -1,0 +1,96 @@
+<ion-grid class="ion-padding-horizontal ion-display-block">
+    @for (sound of soundGroup.sounds; track sound; let soundIndex = $index) {
+        <ion-row>
+            <ion-col size="5">
+                <ion-item>
+                    <ion-label
+                        position="stacked"
+                        for="name"
+                        [color]="colours[soundIndex]"
+                    >
+                        Name
+                    </ion-label>
+                    <ion-input
+                        [color]="colours[soundIndex]"
+                        class="ion-text-center"
+                        [placeholder]="defaultSound.name"
+                        [(ngModel)]="sound.name"
+                        (change)="change()"
+                        name="name"
+                        id="name"
+                        label=""
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+            <ion-col size="6">
+                <ion-item>
+                    <ion-label
+                        position="stacked"
+                        for="link"
+                        [color]="colours[soundIndex]"
+                    >
+                        Link
+                    </ion-label>
+                    <ion-input
+                        [color]="colours[soundIndex]"
+                        class="ion-text-center"
+                        [placeholder]="defaultSound.link"
+                        [(ngModel)]="sound.link"
+                        (change)="change()"
+                        name="link"
+                        id="link"
+                        type="url"
+                        label=""
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+            <ion-col class="ion-text-center">
+                <ion-button
+                    fill="clear"
+                    color="danger"
+                    class="ion-margin"
+                    (click)="removeSound(soundIndex)"
+                    title="Delete Sound"
+                >
+                    <ion-icon
+                        name="close-circle-outline"
+                        slot="icon-only"
+                        size="large"
+                    />
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    }
+    @if (soundGroup.sounds.length < soundGroupSize) {
+        <ion-row class="ion-padding-vertical">
+            <ion-col>
+                <ion-item
+                    button
+                    detail="false"
+                    lines="none"
+                    (click)="addSound()"
+                >
+                    <ion-icon name="add" slot="start" />
+                    <ion-label>Add Sound</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="4">
+                <ion-item
+                    button
+                    detail="false"
+                    lines="none"
+                    (click)="deleteSoundGroup()"
+                >
+                    <ion-icon
+                        name="trash-outline"
+                        slot="start"
+                        color="danger"
+                    />
+                    <ion-label color="danger">Delete Sound Group</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    }
+</ion-grid>

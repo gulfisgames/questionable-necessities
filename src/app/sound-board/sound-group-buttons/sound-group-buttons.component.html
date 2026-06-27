@@ -1,0 +1,22 @@
+@for (sound of soundGroup.sounds; track sound; let soundIndex = $index) {
+    <ion-button
+        [fill]="sound.play ? 'outline' : 'solid'"
+        [color]="colours[soundIndex]"
+        slot="end"
+        size="default"
+        [disabled]="disabled || !isValidUrl(sound.link)"
+        (click)="togglePlayback($event, sound)"
+        class="ion-margin"
+    >
+        @if (!sound.loading) {
+            <ion-icon
+                slot="start"
+                [name]="sound.play ? 'pause-outline' : 'play-outline'"
+            />
+        }
+        @if (sound.loading) {
+            <ion-spinner slot="start" name="crescent" class="loading-spinner" />
+        }
+        <ion-label>{{ sound.name }}</ion-label>
+    </ion-button>
+}

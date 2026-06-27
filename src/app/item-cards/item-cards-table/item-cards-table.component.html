@@ -1,0 +1,61 @@
+<ion-list>
+    @if (cards.length < 1) {
+        <ion-note lines="none" class="ion-margin">
+            Add <ion-text class="text-weight-700"> {{ name }} </ion-text> using
+            <ion-text class="text-weight-700"> {{ name }} Form </ion-text> or
+            <ion-text class="text-weight-700">
+                {{ importLabel }}
+            </ion-text>
+        </ion-note>
+    }
+    @for (card of cards; track card) {
+        <ion-item-sliding>
+            <ion-item
+                button
+                lines="full"
+                detail="false"
+                (click)="loadCard(card)"
+            >
+                <ion-label
+                    class="identifier"
+                    title="Identifier: {{ card.identifier }}"
+                >
+                    {{ card.identifier }}
+                </ion-label>
+                <ion-label class="name" title="Name: {{ card.name }}">
+                    {{ card.name }}
+                </ion-label>
+                <ion-label class="type" title="Type: {{ card.type }}">
+                    {{ card.type }}
+                </ion-label>
+                <ion-label class="rarity" title="Rarity: {{ card.rarity }}">
+                    {{ card.rarity }}
+                </ion-label>
+                <ion-select
+                    class="size-select ion-margin-horizontal"
+                    placeholder="Size"
+                    interface="popover"
+                    [interfaceOptions]="{ cssClass: 'item-card-size-popover' }"
+                    [value]="card.size"
+                    (ionChange)="setCardSize(card, $any($event))"
+                    title="Size: {{ card.size }}"
+                >
+                    @for (size of sizes; track size) {
+                        <ion-select-option [value]="size">
+                            {{ size }}
+                        </ion-select-option>
+                    }
+                </ion-select>
+            </ion-item>
+            <ion-item-options side="end" (ionSwipe)="deleteCard(card)">
+                <ion-item-option
+                    color="danger"
+                    expandable
+                    (click)="deleteCard(card)"
+                >
+                    Delete
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+    }
+</ion-list>

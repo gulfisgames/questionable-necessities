@@ -1,0 +1,123 @@
+<ion-grid class="ion-margin">
+    <form
+        #itemCardEditorForm="ngForm"
+        (ngSubmit)="onSave(); onClear(); itemCardEditorForm.reset()"
+    >
+        <ion-row>
+            <ion-col size="6">
+                <ion-button
+                    expand="block"
+                    color="success"
+                    type="submit"
+                    [disabled]="!itemCardEditorForm.form.valid"
+                >
+                    Save
+                </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button
+                    expand="block"
+                    fill="outline"
+                    color="danger"
+                    type="reset"
+                    (click)="onClear(); itemCardEditorForm.reset()"
+                >
+                    Clear
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row mode="md">
+            <ion-col size="3">
+                <ion-item fill="outline">
+                    <ion-input
+                        class="ion-text-center"
+                        placeholder="27040"
+                        required="true"
+                        [(ngModel)]="card.identifier"
+                        name="identifier"
+                        id="identifier"
+                        label="Identifier"
+                        labelPlacement="stacked"
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+            <ion-col size="9">
+                <ion-item fill="outline">
+                    <ion-input
+                        class="ion-text-center"
+                        placeholder="Cloak of Billowing"
+                        required="true"
+                        [(ngModel)]="card.name"
+                        name="name"
+                        id="name"
+                        label="Name"
+                        labelPlacement="stacked"
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item fill="outline">
+                    <ion-input
+                        class="ion-text-center"
+                        placeholder="Requires attunement (leave blank if not attuneable)"
+                        required="false"
+                        [(ngModel)]="card.attunement"
+                        name="attunement"
+                        id="attunement"
+                        label="Attunement"
+                        labelPlacement="stacked"
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+            <ion-col size="6">
+                <ion-item fill="outline">
+                    <ion-input
+                        class="ion-text-center"
+                        placeholder="Wondrous Item"
+                        required="true"
+                        [(ngModel)]="card.type"
+                        name="type"
+                        id="type"
+                        label="Type"
+                        labelPlacement="stacked"
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+            <ion-col size="6">
+                <ion-item fill="outline">
+                    <ion-input
+                        class="ion-text-center"
+                        placeholder="Common"
+                        required="false"
+                        [(ngModel)]="card.rarity"
+                        name="rarity"
+                        id="rarity"
+                        label="Rarity"
+                        labelPlacement="stacked"
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+            <ion-col size="12">
+                <ion-item fill="outline" lines="none">
+                    <ion-textarea
+                        class="ion-text-center textarea-description"
+                        placeholder="While wearing this cloak, you can use a bonus action to make it billow dramatically."
+                        [autoGrow]="true"
+                        required="true"
+                        [(ngModel)]="card.description"
+                        name="description"
+                        id="description"
+                        label="Description"
+                        labelPlacement="stacked"
+                        [debounce]="debounceTime"
+                    />
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-grid>

@@ -1,0 +1,112 @@
+<ion-content>
+    <app-guide [name]="name" />
+    <app-sound-player
+        [sound]="sound"
+        [player]="player"
+        [loading]="loading"
+        [error]="error"
+        [isPlaying]="isPlaying"
+        (playbackEvent)="playbackEvent($event)"
+        (volumeEvent)="volumeEvent($event)"
+    />
+    <ion-list lines="full">
+        <ion-row>
+            <ion-col class="ion-text-center">
+                <youtube-player
+                    [videoId]="getVideoId(sound?.link)"
+                    [disableCookies]="true"
+                    (stateChange)="debouncePlayerState($event.data)"
+                    (ready)="playerReady($event)"
+                    (error)="playerError(true)"
+                    [playerVars]="{
+                        loop: 1,
+                        autoplay: 1,
+                        playlist: getVideoId(sound?.link),
+                    }"
+                    disablePlaceholder
+                />
+            </ion-col>
+        </ion-row>
+        <ion-accordion-group
+            [multiple]="true"
+            [value]="openSoundGroupIds"
+            (ionChange)="onToggleSoundGroup($any($event))"
+            [disabled]="loading"
+        >
+            <ion-reorder-group
+                [disabled]="false"
+                (ionReorderEnd)="onReorderEnd($any($event))"
+            >
+                @for (
+                    soundGroup of soundGroups;
+                    track soundGroup.id;
+                    let soundGroupIndex = $index
+                ) {
+                    <ion-accordion [value]="soundGroup.id">
+                        <ion-item slot="header">
+                            <ion-reorder slot="start"></ion-reorder>
+                            <ion-item lines="none" class="ion-margin-vertical">
+                                <ion-input
+                                    class="ion-no-padding"
+                                    [placeholder]="
+                                        'Sound Group ' +
+                                        (soundGroupIndex + 1) +
+                                        ' Name'
+                                    "
+                                    [(ngModel)]="soundGroup.name"
+                                    (click)="$event.stopPropagation()"
+                                    (change)="save()"
+                                    name="name"
+                                    id="name"
+                                    label=""
+                                />
+                            </ion-item>
+                            <app-sound-group-buttons
+                                slot="end"
+                                [soundGroup]="soundGroup"
+                                [disabled]="loading"
+                                (togglePlaybackEvent)="togglePlayback($event)"
+                            />
+                        </ion-item>
+                        <app-sound-group-editor
+                            slot="content"
+                            [soundGroup]="soundGroup"
+                            (deleteSoundGroupEvent)="deleteSoundGroup($event)"
+                            (changeEvent)="save()"
+                        />
+                    </ion-accordion>
+                }
+            </ion-reorder-group>
+        </ion-accordion-group>
+        <ion-row>
+            <ion-col>
+                <ion-item
+                    class="ion-padding-vertical"
+                    button
+                    detail="false"
+                    lines="none"
+                    (click)="addSoundGroup()"
+                    [disabled]="loading"
+                >
+                    <ion-icon name="add" slot="start" />
+                    <ion-label>Add Sound Group</ion-label>
+                </ion-item>
+            </ion-col>
+            <ion-col size="3">
+                <app-json-importer
+                    variant="item"
+                    [label]="importLabel"
+                    (importEvent)="import($event)"
+                />
+            </ion-col>
+            <ion-col size="3">
+                <app-json-exporter
+                    variant="item"
+                    [json]="soundGroups"
+                    [label]="exportLabel"
+                />
+            </ion-col>
+        </ion-row>
+    </ion-list>
+    <app-footer />
+</ion-content>

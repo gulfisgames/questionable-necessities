@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    height: 843px;
+}
+
+.sheet {
+    --rows: 4;
+    --columns: 3;
+    --gap: 2mm;
+    margin: 0;
+    padding: 1mm;
+    grid-auto-flow: column;
+
+    &:not(:first-child) {
+        margin-top: 5mm;
+    }
+}

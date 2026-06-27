@@ -1,0 +1,28 @@
+<ion-grid>
+    <ion-row>
+        <ion-col>
+            <ion-button
+                expand="block"
+                fill="outline"
+                color="danger"
+                (click)="loadTokenSet()"
+            >
+                Clear Tokens
+            </ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        @for (tokenSetName of tokenSetNames; track tokenSetName) {
+            <ion-col>
+                <ion-button
+                    expand="block"
+                    fill="solid"
+                    color="medium"
+                    (click)="loadTokenSet(tokenSetName)"
+                >
+                    {{ tokenSetName }}
+                </ion-button>
+            </ion-col>
+        }
+    </ion-row>
+</ion-grid>

@@ -1,0 +1,11 @@
+<ion-content>
+    <div class="body A4 landscape">
+        @for (sheet of sheets; track sheet) {
+            <section class="sheet item-cards-sheet">
+                @for (card of sheet; track card) {
+                    <app-item-card [card]="card" (click)="loadCard(card)" />
+                }
+            </section>
+        }
+    </div>
+</ion-content>

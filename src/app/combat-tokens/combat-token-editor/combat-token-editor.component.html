@@ -1,0 +1,168 @@
+<ion-grid class="ion-margin">
+    <form #combatTokenEditorForm="ngForm" (ngSubmit)="onSave()" mode="md">
+        <ion-row>
+            <ion-col size="8">
+                <div
+                    fill="outline"
+                    class="token-preview"
+                    [appCombatTokenEditorWheel]="token"
+                >
+                    <span class="token-preview-label">Preview</span>
+                    <div
+                        [class]="['token', token.size.toLowerCase()]"
+                        [style.background-image]="'url(' + token.image + ')'"
+                        [style.border-color]="token.colour"
+                        [style.background-size]="token.zoom + '%'"
+                        [style.background-position-x]="
+                            scaleTokenPosition(token.positionX, token.size)
+                        "
+                        [style.background-position-y]="
+                            scaleTokenPosition(token.positionY, token.size)
+                        "
+                        [appCombatTokenEditorDrag]="token"
+                    ></div>
+                    <ion-input class="ion-hide" value=" " readonly="true" />
+                </div>
+            </ion-col>
+            <ion-col>
+                <ion-row>
+                    <ion-col class="ion-padding-bottom">
+                        <ion-button
+                            mode="ios"
+                            expand="block"
+                            color="success"
+                            type="submit"
+                            [disabled]="!combatTokenEditorForm.form.valid"
+                        >
+                            Add 1 Token
+                        </ion-button>
+                        <ion-button
+                            size="small"
+                            mode="ios"
+                            expand="block"
+                            color="success"
+                            fill="outline"
+                            (click)="onSaveBatch()"
+                            [disabled]="!combatTokenEditorForm.form.valid"
+                        >
+                            Add 8 Tokens
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-padding-bottom">
+                        <ion-input
+                            label="Image"
+                            label-placement="floating"
+                            fill="outline"
+                            class="ion-text-center"
+                            placeholder="http://path.to/img.png"
+                            [(ngModel)]="token.image"
+                            name="image"
+                            id="image"
+                            required="true"
+                            [debounce]="debounceTime"
+                        />
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-padding-bottom">
+                        <ion-select
+                            label="Size"
+                            label-placement="floating"
+                            fill="outline"
+                            mode="md"
+                            placeholder="Size"
+                            interface="popover"
+                            [(ngModel)]="token.size"
+                            name="size"
+                            id="size"
+                            required="true"
+                        >
+                            @for (size of sizes | keyvalue; track size) {
+                                <ion-select-option [value]="size.key">
+                                    {{ size.key }}
+                                </ion-select-option>
+                            }
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-padding-bottom">
+                        <ion-input
+                            label="Colour"
+                            label-placement="floating"
+                            fill="outline"
+                            class="ion-text-center"
+                            placeholder="#cc79a7"
+                            [(ngModel)]="token.colour"
+                            name="colour"
+                            id="colour"
+                            required="true"
+                            [debounce]="debounceTime"
+                        />
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-no-padding">
+                        <ion-label
+                            position="floating"
+                            for="zoom"
+                            class="token-zoom-label"
+                        >
+                            Zoom
+                        </ion-label>
+                        <ion-range
+                            mode="ios"
+                            class="token-zoom"
+                            [(ngModel)]="token.zoom"
+                            name="zoom"
+                            id="zoom"
+                            required="true"
+                            pin="true"
+                            [min]="zoomRange.min"
+                            [max]="zoomRange.max"
+                            [appCombatTokenEditorWheel]="token"
+                        />
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col class="ion-padding-bottom">
+                        <ion-input
+                            label="Position X"
+                            label-placement="floating"
+                            fill="outline"
+                            class="ion-text-center"
+                            placeholder="0"
+                            [(ngModel)]="token.positionX"
+                            name="position-x"
+                            id="position-x"
+                            required="true"
+                            type="number"
+                            step="0.01"
+                            inputmode="decimal"
+                            [debounce]="debounceTime"
+                        />
+                    </ion-col>
+                    <ion-col class="ion-padding-bottom">
+                        <ion-input
+                            label="Position Y"
+                            label-placement="floating"
+                            fill="outline"
+                            class="ion-text-center"
+                            placeholder="0"
+                            [(ngModel)]="token.positionY"
+                            name="position-y"
+                            id="position-y"
+                            required="true"
+                            type="number"
+                            step="0.01"
+                            inputmode="decimal"
+                            [debounce]="debounceTime"
+                        />
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-grid>

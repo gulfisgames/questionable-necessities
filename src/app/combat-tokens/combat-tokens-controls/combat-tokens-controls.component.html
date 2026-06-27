@@ -1,0 +1,14 @@
+<ion-header class="ion-margin-bottom">
+    <ion-toolbar color="transparent">
+        <app-json-exporter
+            slot="start"
+            [label]="exportLabel('JSON')"
+            [json]="tokens"
+        />
+        <app-html-exporter
+            slot="end"
+            [label]="exportLabel('HTML')"
+            sheetSelector=".combat-tokens-sheet"
+        />
+    </ion-toolbar>
+</ion-header>

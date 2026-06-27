@@ -1,0 +1,32 @@
+.sound-name {
+    width: 270px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sound-player-volume {
+    max-width: 270px;
+
+    &::part(pin) {
+        top: 14px;
+        z-index: 3;
+    }
+}
+
+.sound-player-progress-bar {
+    cursor: pointer;
+
+    &:hover {
+        height: 16px;
+
+        &::part(stream) {
+            background-size: 10px 48px;
+        }
+    }
+}
+
+.loading-spinner {
+    height: 32px;
+    width: 32px;
+}

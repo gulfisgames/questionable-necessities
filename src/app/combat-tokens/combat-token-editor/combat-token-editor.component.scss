@@ -1,0 +1,42 @@
+:host {
+    display: block;
+    min-width: 674px;
+}
+
+.token-preview {
+    border: 1px solid
+        var(--ion-color-step-300, var(--ion-background-color-step-300, #b3b3b3));
+    border-radius: 4px;
+    height: 100%;
+    align-content: center;
+    justify-items: center;
+
+    .token-preview-label {
+        background: white;
+        position: absolute;
+        top: -3px;
+        left: 30px;
+        padding-left: 4px;
+        padding-right: 4px;
+        font-size: 0.9rem;
+    }
+
+    &::part(native) {
+        aspect-ratio: 1 / 1;
+        align-items: center;
+    }
+}
+
+.token-zoom-label {
+    padding-left: 8px;
+}
+
+.token-zoom {
+    padding-top: 0;
+
+    &::part(pin) {
+        transform: translate3d(0, 0, 0) scale(1);
+        top: 11px;
+        z-index: 3;
+    }
+}

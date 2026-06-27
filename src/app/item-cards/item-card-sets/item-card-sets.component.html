@@ -1,0 +1,27 @@
+<ion-grid>
+    <ion-row>
+        <ion-col>
+            <ion-button
+                expand="block"
+                fill="outline"
+                color="danger"
+                (click)="loadCardSet()"
+            >
+                Clear Items
+            </ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        @for (cardSetName of cardSetNames; track cardSetName) {
+            <ion-col>
+                <ion-button
+                    expand="block"
+                    fill="outline"
+                    (click)="loadCardSet(cardSetName)"
+                >
+                    {{ cardSetName }}
+                </ion-button>
+            </ion-col>
+        }
+    </ion-row>
+</ion-grid>

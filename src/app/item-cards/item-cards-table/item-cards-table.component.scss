@@ -1,0 +1,33 @@
+.identifier {
+    flex: 1;
+}
+
+.name {
+    flex: 4;
+}
+
+.type {
+    flex: 2;
+}
+
+.rarity {
+    flex: 2;
+}
+
+.size-select {
+    flex: 1;
+    width: 100px;
+}
+
+.item-card-size-popover {
+    ion-item {
+        --padding-start: 0;
+        text-indent: 16px;
+    }
+
+    /* hide divider on last item */
+    ion-item:last-of-type {
+        --inner-border-width: 0;
+        --border-width: 0;
+    }
+}

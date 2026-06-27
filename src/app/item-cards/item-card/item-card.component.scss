@@ -1,0 +1,81 @@
+$table-border: 0.6mm solid #000;
+
+table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family:
+        'Lato', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+    font-size: 18px;
+}
+
+tr {
+    height: 1px;
+
+    &:last-child {
+        height: auto;
+
+        td {
+            padding: 8px;
+            border-bottom: $table-border;
+        }
+    }
+}
+
+td {
+    border: $table-border;
+    border-bottom: none;
+    border-left: none;
+
+    &:first-child {
+        border-left: $table-border;
+    }
+
+    text-align: center;
+    padding: 2mm;
+    vertical-align: middle;
+
+    &.attunement,
+    &.description {
+        line-height: 1.2;
+        white-space: pre-line;
+    }
+
+    &.description {
+        font-size: 16px;
+    }
+}
+
+:host {
+    height: 100%;
+    overflow: hidden;
+    vertical-align: top;
+    grid-column: span 1;
+    display: inline-block;
+    cursor: pointer;
+
+    &.small {
+        grid-row: span 1;
+    }
+
+    &.medium {
+        grid-row: span 2;
+    }
+
+    &.large {
+        grid-row: span 3;
+    }
+
+    &.xlarge {
+        grid-row: span 4;
+    }
+
+    &.double {
+        grid-column: span 2;
+    }
+
+    &.triple {
+        grid-column: span 3;
+    }
+}
