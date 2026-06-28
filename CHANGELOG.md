@@ -1,3 +1,12 @@
+## [0.1.3](https://github.com/gulfisgames/questionable-necessities/compare/v0.1.2...v0.1.3) (2026-06-28)
+
+
+### Bug Fixes
+
+* version bump and footer ([1eb8640](https://github.com/gulfisgames/questionable-necessities/commit/1eb864092cb9354d16fa219ea7233bda7ca09ad6))
+
+
+
 ## [0.1.2](https://github.com/gulfisgames/questionable-necessities/compare/v0.1.1...v0.1.2) (2026-06-28)
 
 
