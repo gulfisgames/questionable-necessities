@@ -1,0 +1,1 @@
+import{Fb as f,g as t,k as e,o as r,xa as i,za as n}from"./chunk-FYRFTYPO.js";function R(s,m){let p=e(n),c=e(r);p.events.pipe(t(o=>o instanceof i),t(({urlAfterRedirects:o})=>o===s),f(c)).subscribe(m)}export{R as a};
