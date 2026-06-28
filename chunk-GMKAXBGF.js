@@ -1,0 +1,1 @@
+import{Gb as a,e as o,g as r,k as i,xa as e,za as n}from"./chunk-R5VAUFZL.js";function l(p="/"){let t=i(n);return a(t.events.pipe(r(f=>f instanceof e),o(()=>"/"+t.routerState.snapshot.root.firstChild?.routeConfig?.path)),{initialValue:p})}export{l as a};
