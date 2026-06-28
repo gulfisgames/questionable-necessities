@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import {
     IonButton,
     IonButtons,
@@ -9,7 +10,7 @@ import {
 @Component({
     selector: 'app-footer',
     templateUrl: './footer.component.html',
-    imports: [IonFooter, IonToolbar, IonButtons, IonButton],
+    imports: [IonFooter, IonToolbar, IonButtons, IonButton, RouterModule],
 })
 export class FooterComponent {
     year = new Date().getFullYear();

@@ -1,21 +1,13 @@
 <ion-footer collapse="fade" [translucent]="true">
     <ion-toolbar class="ion-padding-horizontal ion-padding-top">
         <ion-buttons slot="start">
-            <ion-button
-                color="medium"
-                href="https://github.com/gulfaraz/questionable-necessities"
-            >
+            <ion-button color="medium" routerLink="/">
                 © {{ year }} Gulfaraz Rahman
             </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
-            <ion-button color="medium" href="/questionable-necessities/#/terms">
-                Terms
-            </ion-button>
-            <ion-button
-                color="medium"
-                href="/questionable-necessities/#/privacy"
-            >
+            <ion-button color="medium" routerLink="/terms">Terms</ion-button>
+            <ion-button color="medium" routerLink="/privacy">
                 Privacy
             </ion-button>
         </ion-buttons>
