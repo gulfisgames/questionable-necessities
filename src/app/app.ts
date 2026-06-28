@@ -11,6 +11,7 @@ import {
     IonList,
     IonMenu,
     IonMenuToggle,
+    IonNote,
     IonRow,
     IonTabBar,
     IonTabButton,
@@ -23,6 +24,7 @@ import { name as combatTokensName } from './combat-tokens/combat-tokens.config';
 import { name as itemCardsName } from './item-cards/item-cards.config';
 import { name as rulesName } from './rules/rules.config';
 import { name as scenesName } from './scenes/scenes.config';
+import { FooterComponent } from './shared/footer/footer.component';
 import { name as soundBoardName } from './sound-board/sound-board.config';
 
 @Component({
@@ -45,6 +47,8 @@ import { name as soundBoardName } from './sound-board/sound-board.config';
         IonContent,
         IonList,
         IonItem,
+        IonNote,
+        FooterComponent,
         RouterModule,
     ],
 })

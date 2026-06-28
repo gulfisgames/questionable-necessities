@@ -1,15 +1,31 @@
-<ion-footer collapse="fade" [translucent]="true">
-    <ion-toolbar class="ion-padding-horizontal ion-padding-top">
-        <ion-buttons slot="start">
-            <ion-button color="medium" routerLink="/">
-                © {{ year }} Gulfaraz Rahman
-            </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="end">
-            <ion-button color="medium" routerLink="/terms">Terms</ion-button>
-            <ion-button color="medium" routerLink="/privacy">
-                Privacy
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-footer>
+@if (type === 'menu') {
+    <ion-item [href]="versionLink" detail="false" lines="none">
+        <ion-note>{{ versionText }}</ion-note>
+    </ion-item>
+    <ion-item class="footer-menu-links" lines="none">
+        <ion-button fill="clear" color="medium" routerLink="/terms">
+            Terms
+        </ion-button>
+        <ion-button fill="clear" color="medium" routerLink="/privacy">
+            Privacy
+        </ion-button>
+    </ion-item>
+} @else {
+    <ion-footer collapse="fade" [translucent]="true">
+        <ion-toolbar class="ion-padding">
+            <ion-buttons slot="start">
+                <ion-button color="medium" [href]="versionLink">
+                    {{ versionText }}
+                </ion-button>
+            </ion-buttons>
+            <ion-buttons slot="end">
+                <ion-button color="medium" routerLink="/terms">
+                    Terms
+                </ion-button>
+                <ion-button color="medium" routerLink="/privacy">
+                    Privacy
+                </ion-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-footer>
+}

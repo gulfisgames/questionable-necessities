@@ -69,9 +69,15 @@
                         {{ n.label }}
                     </ion-item>
                 }
-                <ion-item class="mt-auto" detail="false" [href]="paymentLink">
-                    <ion-label>Pay What You Want</ion-label>
+                <ion-item
+                    class="mt-auto"
+                    detail="false"
+                    [href]="paymentLink"
+                    lines="none"
+                >
+                    <ion-note>Pay What You Want</ion-note>
                 </ion-item>
+                <app-footer type="menu" />
             </ion-list>
         </ion-menu-toggle>
     </ion-content>
