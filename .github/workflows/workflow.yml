@@ -7,11 +7,8 @@ on:
     branches: [main]
 
 jobs:
-  test-build-deploy:
+  test:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
 
     strategy:
       matrix:
@@ -29,16 +26,8 @@ jobs:
 
       - run: npm test
 
-      - run: npm run build
-
-      - name: Deploy to GitHub Pages
-        if: github.event_name == 'push'
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          folder: dist/browser
-
   bump-version:
-    needs: [test-build-deploy]
+    needs: [test]
     if: github.event_name == 'push'
 
     runs-on: ubuntu-latest
@@ -65,3 +54,35 @@ jobs:
           release-count: 10
           git-user-name: 'GitHub Action'
           git-user-email: 'conventional-changelog-action@gulfaraz.com'
+
+  build-deploy:
+    needs: [bump-version]
+    if: github.event_name == 'push'
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        node-version: [24.x]
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: npm ci --no-audit --ignore-scripts
+
+      - run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/browser
